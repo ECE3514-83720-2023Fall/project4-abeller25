@@ -24,6 +24,7 @@ private:
    RoutingEntry rtEntry; //routing entry 
    std::shared_ptr<treeNode> leftChildPtr;  // Pointer to left child
    std::shared_ptr<treeNode> rightChildPtr; // Pointer to right child
+   bool removed;					  // boolean flag for if node has been removed
    
 public:
 
@@ -39,6 +40,12 @@ public:
 
    //set the port field of the routing entry to port_in
    void setPort(const int port_in);
+
+   // changes value for if node has been removed
+   void markAsRemoved();
+
+   // flag for if node has been removed
+   bool isRemoved() const;
 
 
    //returns the netId the routing entry 

@@ -77,7 +77,8 @@ public:
    //------------------------------------------------------------
    // Public prefixTree Interface Methods Section.
    //------------------------------------------------------------
-   
+  
+
    //return true if the prefixTree is empty
    bool isEmpty() const;
 

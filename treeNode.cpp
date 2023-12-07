@@ -12,13 +12,13 @@
 
 
 
-treeNode::treeNode() : rtEntry({ "", -1 }), leftChildPtr(nullptr), rightChildPtr(nullptr) 
+treeNode::treeNode() : rtEntry({ "", -1 }), leftChildPtr(nullptr), rightChildPtr(nullptr), removed(0)
 {
 	
 }
 
 treeNode::treeNode(const std::string netId_in,  int port_in) 
-	: rtEntry({ netId_in, port_in }), leftChildPtr(nullptr), rightChildPtr(nullptr)
+	: rtEntry({ netId_in, port_in }), leftChildPtr(nullptr), rightChildPtr(nullptr), removed(0)
 {
 	
 }
@@ -32,7 +32,17 @@ void treeNode::setPort(const int port_in)
 	rtEntry.port = port_in; 
 }
 
+void treeNode::markAsRemoved()
+{
+	// set removed value to true
+	removed = true;
+}
 
+bool treeNode::isRemoved() const
+{
+	// returns if node has been removed
+	return removed;
+}
 
 std::string treeNode::getNetId() const 
 {

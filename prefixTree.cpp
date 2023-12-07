@@ -174,7 +174,6 @@ bool prefixTree::add(const std::string netid, const int port)
 			}
 		}
 			
-			
 		if (parent != nullptr)
 		{
 			if (netid.compare(parent->getNetId()) < 0)
@@ -227,8 +226,17 @@ bool prefixTree::removeHelper(std::shared_ptr<treeNode>& curr, const std::string
 	// check if prefix is prefix of current node's netId
 	if (curr->getNetId() == prefix)
 	{
-		// prefix found, remove it 
-		return removeNode(curr);
+		if (!curr->isRemoved())
+		{
+			curr->markAsRemoved();
+			// prefix found, remove it 
+			return removeNode(curr);
+		}
+		else
+		{
+			// already been removed
+			return false;
+		}
 	}
 	else if (prefix < curr->getNetId())
 	{
