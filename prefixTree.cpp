@@ -98,7 +98,7 @@ std::shared_ptr<treeNode> prefixTree::findNode(std::shared_ptr<treeNode> currNod
 
 }
 
- int prefixTree::helpFindPort(std::shared_ptr<treeNode> currNode, 
+ int prefixTree::helpFindPort(const std::shared_ptr<treeNode> currNode, 
 	const std::string& ipaddr) const
 {
 	 std::cout << "Checking node " << currNode->getNetId() << ", " << currNode->getPort() << std::endl; 
@@ -198,7 +198,7 @@ bool prefixTree::add(const std::string netid, const int port)
 	}
 }
 
-int prefixTree::findPort(std::string ipaddr) const
+int prefixTree::findPort(const std::string ipaddr) const
 {
 	// starts search from root of tree
 	return helpFindPort(rootPtr, ipaddr);
