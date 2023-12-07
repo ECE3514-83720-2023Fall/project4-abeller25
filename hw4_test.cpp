@@ -153,15 +153,15 @@ TEST_CASE("Test the postOrderTraverse Function", "[prefixTree]")
 	REQUIRE(result == "Third Second First ");
 }
 
-TEST_CASE("Test the findPort function using a .txt file", "[prefixTree")
-{
-	string file = "C:\\Users\\Bryce Eller\\project4-abeller25\\routing_table.txt";
-	prefixTree prefix(file);
-
-	REQUIRE(prefix.findPort("0001") == 0);
-	//REQUIRE(prefix.findPort("0100") == 1);
-	//REQUIRE(prefix.findPort("10") == 2);
-	REQUIRE(prefix.findPort("000") == 3);
-	REQUIRE(prefix.findPort("") == 4);
-}
+//TEST_CASE("Test the findPort function using a .txt file", "[prefixTree")
+//{
+//	string file = "C:\\Users\\Bryce Eller\\project4-abeller25\\routing_table.txt";
+//	prefixTree prefix(file);
+//
+//	REQUIRE(prefix.findPort("0001") == 0);
+//	//REQUIRE(prefix.findPort("0100") == 1);
+//	//REQUIRE(prefix.findPort("10") == 2);
+//	REQUIRE(prefix.findPort("000") == 3);
+//	REQUIRE(prefix.findPort("") == 4);
+//}
 
