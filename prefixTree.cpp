@@ -233,11 +233,13 @@ bool prefixTree::removeHelper(std::shared_ptr<treeNode>& curr, const std::string
 	else if (prefix < curr->getNetId())
 	{
 		// search in left/right tree
-		 return removeHelper(curr->getLeftChildPtr(), prefix);
+		std::shared_ptr<treeNode> left = curr->getLeftChildPtr();
+		return removeHelper(left, prefix);
 	}
 	else
 	{
-		 return removeHelper(curr->getRightChildPtr(), prefix);
+		std::shared_ptr<treeNode> right = curr->getRightChildPtr();
+		return removeHelper(right, prefix);
 	}
 }
 
@@ -268,7 +270,8 @@ bool prefixTree::removeNode(std::shared_ptr<treeNode>& node)
 		node->setPort(successor->getPort()); 
 
 		// remove node
-		removeNode(node->getRightChildPtr());
+		std::shared_ptr<treeNode> right = node->getRightChildPtr();
+		removeNode(right);
 	}
 
 	return true; 
@@ -289,9 +292,12 @@ void prefixTree::clearHelper(std::shared_ptr<treeNode>& curr)
 {
 	if (curr != nullptr)
 	{
+		std::shared_ptr<treeNode> left = curr->getLeftChildPtr();
+		std::shared_ptr<treeNode> right = curr->getRightChildPtr();
+
 		// recursively clear the left and right subtrees
-		clearHelper(curr->getLeftChildPtr());
-		clearHelper(curr->getRightChildPtr());
+		clearHelper(left);
+		clearHelper(right);
 
 		// delete the current node
 		curr = nullptr; 
