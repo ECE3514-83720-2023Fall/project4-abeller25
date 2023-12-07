@@ -1,4 +1,11 @@
-
+////////////////////////////////////////////////////////
+// ECE 3514, Project 4, Ashton Bryce Eller
+//
+// File name: treeNode.h 
+// Description: Class file that holds the functions for setting/getting
+//				netIds, ports, and child pointers
+// Date: 12/06/2023 
+//
 
 #ifndef TREE_NODE_
 #define TREE_NODE_

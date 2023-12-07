@@ -1,62 +1,73 @@
+////////////////////////////////////////////////////////
+// ECE 3514, Project 4, Ashton Bryce Eller
+//
+// File name: treeNode.cpp 
+// Description: Implementation file that holds the instantiations for  
+//				getting netIds, port, and childPtrs for a tree node
+// Date: 12/06/2023 
+//
 
 
 #include "treeNode.h"
 
 
 
-treeNode::treeNode() {
+treeNode::treeNode() : rtEntry({ "", -1 }), leftChildPtr(nullptr), rightChildPtr(nullptr) 
+{
 	
 }
 
-treeNode::treeNode(const std::string netId_in,  int port_in) {
+treeNode::treeNode(const std::string netId_in,  int port_in) 
+	: rtEntry({ netId_in, port_in }), leftChildPtr(nullptr), rightChildPtr(nullptr)
+{
 	
 }
 
-void treeNode::setNetId(const std::string netId_in) {
-
-	
-
+void treeNode::setNetId(const std::string netId_in) 
+{
+	rtEntry.netId = netId_in; 
 }
-void treeNode::setPort(const int port_in) {
-
-	
+void treeNode::setPort(const int port_in) 
+{
+	rtEntry.port = port_in; 
 }
 
 
 
-std::string treeNode::getNetId() const {
-	
-	return "";
+std::string treeNode::getNetId() const 
+{
+	return rtEntry.netId;
 }
- int treeNode::getPort() const {
-	 return -1;
-	
+ int treeNode::getPort() const 
+{
+	 return rtEntry.port;	
 }
+
  RoutingEntry treeNode::getRoutingEntry() const
  {
-	 RoutingEntry s = { "",-1 };
-	 return s;
+	 return rtEntry;
  }
-bool treeNode::isLeaf() const {
-	
-	return false;
 
+bool treeNode::isLeaf() const 
+{
+	return (leftChildPtr == nullptr && rightChildPtr == nullptr);
 }
 
-std::shared_ptr<treeNode> treeNode::getLeftChildPtr() const {
-
-	return nullptr;
-	
+std::shared_ptr<treeNode> treeNode::getLeftChildPtr() const 
+{
+	return leftChildPtr;	
 }
-std::shared_ptr<treeNode>  treeNode::getRightChildPtr() const {
-	return nullptr;
-}
-
-void treeNode::setLeftChildPtr(std::shared_ptr<treeNode> leftPtr) {
-	
+std::shared_ptr<treeNode>  treeNode::getRightChildPtr() const
+{
+	return rightChildPtr;
 }
 
-void treeNode::setRightChildPtr(std::shared_ptr<treeNode> rightPtr) {
-	
+void treeNode::setLeftChildPtr(std::shared_ptr<treeNode> leftPtr) 
+{
+	leftChildPtr = leftPtr;
+}
 
+void treeNode::setRightChildPtr(std::shared_ptr<treeNode> rightPtr)
+{
+	rightChildPtr = rightPtr;
 }
