@@ -18,7 +18,7 @@ std::string visitNode(std::shared_ptr<treeNode> nodePtr) {
 	// assume treeNode has function to get its netId and port
 	if (nodePtr != nullptr)
 	{
-		return "Net Id: " + nodePtr->getNetId() + " Port: " + std::to_string(nodePtr->getPort()) + "\n";
+		return nodePtr->getNetId() + ":" + std::to_string(nodePtr->getPort()) + "\n";
 	}
 	else
 	{
@@ -32,7 +32,7 @@ std::string visitRoutingEntry(std::shared_ptr<treeNode> nodePtr) {
 	// assume treeNode has function to get its netId and port
 	if (nodePtr != nullptr && nodePtr->getPort() >= 0)
 	{
-		return "Routing Entry: " + nodePtr->getNetId() + " Port: " +
+		return nodePtr->getNetId() + ":" +
 			std::to_string(nodePtr->getPort()) + "\n";
 	}
 	else

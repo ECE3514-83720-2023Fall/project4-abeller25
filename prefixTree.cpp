@@ -350,12 +350,31 @@ std::string prefixTree::postorderTraverse(std::string visit(std::shared_ptr<tree
 
 int prefixTree::getHeightHelper(std::shared_ptr<treeNode> subTreePtr) const
 {
-	return -1;
+	// if currNode is null, return -1 (empty tree)
+	if (subTreePtr == nullptr)
+	{
+		return 0;
+	}
+
+	// calculate height of each subtree
+	int left = getHeightHelper(subTreePtr->getLeftChildPtr());
+	int right = getHeightHelper(subTreePtr->getRightChildPtr());
+
+	// return max height plus one (rootPtr) 
+	return 1 + std::max(left, right);
 }
 
 int prefixTree::getNumberOfNodesHelper(std::shared_ptr<treeNode> subTreePtr) const
 {
-	return -1;
+	// if curr node is null, return 0
+	if (subTreePtr == nullptr)
+	{
+		return 0;
+	}
+
+	// Recursive: count current node + nodes in left/right subtrees
+	return 1 + getNumberOfNodesHelper(subTreePtr->getLeftChildPtr()) +
+		getNumberOfNodesHelper(subTreePtr->getRightChildPtr());
 }
 
 
@@ -372,7 +391,7 @@ int getHeightHelper(std::shared_ptr<treeNode> subTreePtr)
 	// if currNode is null, return -1 (empty tree)
 	if (subTreePtr == nullptr)
 	{
-		return -1; 
+		return 0; 
 	}
 
 	// calculate height of each subtree
