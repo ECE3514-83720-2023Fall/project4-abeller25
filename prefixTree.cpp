@@ -228,11 +228,11 @@ bool prefixTree::removeHelper(std::shared_ptr<treeNode>& curr, const std::string
 	if (curr->getNetId() == prefix)
 	{
 		// prefix found, remove it 
-		removeNode(curr);
+		return removeNode(curr);
 	}
 	else if (prefix < curr->getNetId())
 	{
-		// search in left/right trees
+		// search in left/right tree
 		 return removeHelper(curr->getLeftChildPtr(), prefix);
 	}
 	else
