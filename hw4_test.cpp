@@ -159,9 +159,9 @@ TEST_CASE("Test the findPort function using a .txt file", "[prefixTree")
 	prefixTree prefix(file);
 
 	REQUIRE(prefix.findPort("0001") == 0);
-	REQUIRE(prefix.findPort("0100") == 1);
-	REQUIRE(prefix.findPort("10") == 2);
-	/*REQUIRE(prefix.findPort("000") == 3);
-	REQUIRE(prefix.findPort("") == 4);*/
+	//REQUIRE(prefix.findPort("0100") == 1);
+	//REQUIRE(prefix.findPort("10") == 2);
+	REQUIRE(prefix.findPort("000") == 3);
+	REQUIRE(prefix.findPort("") == 4);
 }
 

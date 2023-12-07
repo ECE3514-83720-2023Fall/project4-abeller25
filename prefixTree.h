@@ -88,11 +88,11 @@ public:
    int getNumberOfNodes() const;
    
    // Finds a node within a tree given the netid
-   std::shared_ptr<treeNode> prefixTree::findNode(std::shared_ptr<treeNode> currNode,
+   std::shared_ptr<treeNode> findNode(std::shared_ptr<treeNode> currNode,
 	   const std::string& netid) const;
 
    // helper function made to have node input to help with findPort function
-   int prefixTree::helpFindPort(std::shared_ptr<treeNode> currNode,
+   int helpFindPort(std::shared_ptr<treeNode> currNode,
 	   const std::string& ipaddr) const;
 
    // Add a new routing entry (netid, port) to the prefixTree.  
@@ -111,13 +111,13 @@ public:
 
 
    // function used to remove a specific node that is passed in its parameters
-   bool prefixTree::removeNode(std::shared_ptr<treeNode>& node);
+   bool removeNode(std::shared_ptr<treeNode>& node);
 
    // used to find the in-order successor
-   std::shared_ptr<treeNode> prefixTree::findSuccessor(std::shared_ptr<treeNode> curr);
+   std::shared_ptr<treeNode> findSuccessor(std::shared_ptr<treeNode> curr);
 
    // helper function for remove function 
-   bool prefixTree::removeHelper(std::shared_ptr<treeNode>& curr, const std::string& prefix); 
+   bool removeHelper(std::shared_ptr<treeNode>& curr, const std::string& prefix); 
 
    // Removes the targeted routing entry from the prefixTree.  
    //The routing entry's network id netid is given.
@@ -125,7 +125,7 @@ public:
   bool remove(const std::string netId); 
   
   // help function for clear, so as it can take an input
-  void prefixTree::clearHelper(std::shared_ptr<treeNode>& curr);
+  void clearHelper(std::shared_ptr<treeNode>& curr);
 
   // deallocate the memory allocated to the prefixTree. Reset the tree to an empty tree;
   void clear();

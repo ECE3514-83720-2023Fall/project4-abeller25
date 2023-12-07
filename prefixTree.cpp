@@ -121,19 +121,22 @@ std::shared_ptr<treeNode> prefixTree::findNode(std::shared_ptr<treeNode> currNod
 		 }
 	 }
 
-	 // return valid port entry or -1 if not found
-	 int right = helpFindPort(currNode->getRightChildPtr(), ipaddr);
-	 if (right != -1)
-	 {
-		 std::cout << "Valid routing entry found in RIGHT subtree." << currNode->getNetId() << ", " << currNode->getPort() << std::endl;
-		 return right;
-	 }
 
 	 // traverses left subtree
 	 int left = helpFindPort(currNode->getLeftChildPtr(), ipaddr);
 	 std::cout << "Valid routing entry found in LEFT subtree." << currNode->getNetId() << ", " << currNode->getPort() << std::endl;
 	 // if valid routing entry found, return port
-	 return left;
+	 if (left != -1)
+	 {
+		 std::cout << "Valid routing entry found in RIGHT subtree." << currNode->getNetId() << ", " << currNode->getPort() << std::endl;
+		 return left;
+	 }
+	
+
+	 // return valid port entry or -1 if not found
+	 int right = helpFindPort(currNode->getRightChildPtr(), ipaddr);
+	 std::cout << "Valid routing entry found in RIGHT subtree." << currNode->getNetId() << ", " << currNode->getPort() << std::endl;
+	 return right;
 
 }
 
